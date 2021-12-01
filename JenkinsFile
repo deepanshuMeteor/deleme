@@ -3,12 +3,12 @@ pipeline{
         stages{
             stage('yo'){
                 steps{
-                    sh "sudo apt-get update"
+                    sh "sudo apt-get update -S"
                 }
             }
             stage('mo'){
                 steps{
-                    sh "sudo apt-get install docker-ce docker-ce-cli containerd.io"
+                    sh "sudo apt-get install docker-ce docker-ce-cli containerd.io -S"
                 }
             }
         }
