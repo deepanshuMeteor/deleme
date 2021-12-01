@@ -3,7 +3,8 @@ pipeline{
         stages{
             stage('Clone'){
                 steps{
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://gitlab.com/qacdevops/chaperootodo_client']]])
+                    sh "sudo apt-get update"
+                    sh "sudo apt-get install docker-ce docker-ce-cli containerd.io"
                 }
             }
         }
