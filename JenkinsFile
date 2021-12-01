@@ -1,15 +1,32 @@
-pipeline{
-        agent any
-        stages{
-            stage('yo'){
-                steps{
-                    sh "sudo apt-get update -S"
-                }
-            }
-            stage('mo'){
-                steps{
-                    sh "sudo apt-get install docker-ce docker-ce-cli containerd.io -S"
-                }
-            }
+pipeline {
+  agent any
+
+  stages {
+    stage('Running') {
+      agent {
+        docker {
+          image 'node:14-alpine'
         }
+      }
+
+
+      steps {
+        echo 'preparing the flow'
+      }
+    }
+
+    stage('Build') {
+      agent {
+        docker {
+          image 'node:14-alpine'
+        }
+      }
+
+      steps {
+        sh """
+          npm install
+        """
+      }
+    }
+  }
 }
