@@ -1,12 +1,15 @@
-pipeline {
-    agent {
-        docker { image 'node:14-alpine' }
-    }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
+pipeline{
+        agent any
+        stages{
+            stage('yo'){
+                steps{
+                    sh "sudo apt-get update"
+                }
+            }
+            stage('mo'){
+                steps{
+                    sh "sudo apt-get install docker-ce docker-ce-cli containerd.io"
+                }
             }
         }
-    }
 }
